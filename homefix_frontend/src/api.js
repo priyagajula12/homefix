@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create {
-    baseURL: 'https://homefix-backend-l33n.onrender.com/api/',
-};
+const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+});
 
 // The Interceptor: Automatically attaches your security token to every request
 api.interceptors.request.use(
