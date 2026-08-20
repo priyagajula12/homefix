@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Earthy Warm Brown Theme */
+  --primary-brand: #8B5A2B; 
+  --primary-hover: #6B4226;
+  --bg-beige: #FAF3E0; 
+  
+  /* Deep dark brown for text instead of harsh black */
+  --text-dark: #2C1E16; 
+  /* Muted brown for secondary text */
+  --text-light: #7A5C43; 
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  /* Radial gradient using soft beige tones */
+  background: radial-gradient(circle at right center, #F5E6D3 0%, #FAF3E0 40%, #ffffff 100%);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Reusable Button Styles */
+.btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-brand);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3); /* Brown shadow */
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-brand);
+  border-color: var(--primary-brand);
+}
+
+.btn-outline:hover {
+  background-color: rgba(139, 90, 43, 0.05); /* Light brown hover */
+}
