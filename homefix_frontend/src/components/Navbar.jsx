@@ -48,15 +48,9 @@ const Navbar = () => {
           if (myProfile) {
             const firstName = myProfile.full_name ? myProfile.full_name.split(' ')[0] : (isProvider ? 'Provider' : 'Customer');
             
-            // FIX 2: Force the image URL to point to Django's port 8000
-            let pictureUrl = myProfile.profile_picture;
-            if (pictureUrl && !pictureUrl.startsWith('http')) {
-              pictureUrl = `http://127.0.0.1:8000${pictureUrl}`;
-            }
-
             setProfileData({
-              name: firstName,
-              picture: pictureUrl
+            name: firstName,
+            picture: myProfile.profile_picture // Cloudinary provides the perfect URL natively!
             });
           }
         } catch (err) {
