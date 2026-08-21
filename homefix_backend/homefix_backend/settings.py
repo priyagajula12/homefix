@@ -164,15 +164,14 @@ CLOUDINARY_STORAGE = {
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '332798213385597'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '-kDfEATMGrAGUZ7IU0AEfcqMIn4'),
 }
-
-# The legacy setting to prevent the Cloudinary package from crashing
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# Use standard Django static files to prevent compression crashes
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
