@@ -41,14 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'api',
-    'corsheaders',
+    
+    # Cloudinary apps MUST go above staticfiles
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+
+    # Third-party apps
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+
+    # Your custom app
+    'api'
 ]
 
 MIDDLEWARE = [
