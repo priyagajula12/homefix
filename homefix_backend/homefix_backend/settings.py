@@ -26,7 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-local-secret-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*'] # Allows Render to host it
+ALLOWED_HOSTS = [
+    'homefix-backend-l33n.onrender.com', 
+    'localhost', 
+    '127.0.0.1'
+]
 
 
 # Application definition
