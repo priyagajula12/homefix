@@ -57,7 +57,14 @@ const Navbar = () => {
           console.error("Navbar failed to fetch profile:", err);
         }
       };
+      
       fetchProfileForNav();
+
+      // 👇 ADDED: Listen for the custom 'profileUpdated' event
+      window.addEventListener('profileUpdated', fetchProfileForNav);
+      
+      // 👇 ADDED: Cleanup the listener when the component unmounts
+      return () => window.removeEventListener('profileUpdated', fetchProfileForNav);
     }
   }, [token, userId, isProvider]);
 

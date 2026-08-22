@@ -153,6 +153,10 @@ const ProfilePage = () => {
         await api.patch(`${endpoint}${profileId}/`, submitData, { headers: { 'Content-Type': 'multipart/form-data' } });
         setMessage({ text: 'Profile updated successfully!', type: 'success' });
       }
+
+      // 👇 ADDED: Tell the rest of the app to refresh its data
+      window.dispatchEvent(new Event('profileUpdated'));
+
     } catch (err) {
       console.error(err);
       setMessage({ text: 'Failed to save profile. Please ensure all fields are filled.', type: 'error' });
@@ -241,9 +245,13 @@ const ProfilePage = () => {
                   <label style={labelStyle}>Service Category</label>
                   <select name="category" value={formData.category} onChange={handleInputChange} style={inputStyle} required>
                     <option value="" disabled>Select your trade...</option>
-                    {categories.map(c => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
+                    <option value="1">Electrician</option>
+                    <option value="2">Plumber</option>
+                    <option value="3">Carpenter</option>
+                    <option value="4">Painter</option>
+                    <option value="5">AC Repair</option>
+                    <option value="6">Pest Control</option>
+                    <option value="7">Cleaning Services</option>
                   </select>
                 </div>
 
