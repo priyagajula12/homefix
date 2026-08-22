@@ -105,6 +105,9 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '-kDfEATMGrAGUZ7IU0AEfcqMIn4'),
 }
 
+# 🔴 FIX: Mandatory legacy string to prevent django-cloudinary-storage from crashing in Django 6
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 # The modern Django 6.1 dictionary for storage
 STORAGES = {
     "default": {
