@@ -97,6 +97,13 @@ CORS_ALLOW_CREDENTIALS = True
 # ---------------------------------------------------------
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# 👇 MAGIC BULLET 1: Auto-create directory on boot to kill the "No directory at" crash warning
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
+# 👇 MAGIC BULLET 2: Force WhiteNoise to bypass Render's deleted folders and fetch CSS directly from Django
+WHITENOISE_USE_FINDERS = True
+
 MEDIA_URL = '/media/'
 
 CLOUDINARY_STORAGE = {
@@ -105,7 +112,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '-kDfEATMGrAGUZ7IU0AEfcqMIn4'),
 }
 
-# 🔴 FIX: Mandatory legacy string to prevent django-cloudinary-storage from crashing in Django 6
+# Mandatory legacy string to prevent django-cloudinary-storage from crashing in Django 6
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # The modern Django 6.1 dictionary for storage
@@ -114,7 +121,6 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Using default Django storage prevents WhiteNoise from crashing during compression
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
