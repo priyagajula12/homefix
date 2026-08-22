@@ -131,7 +131,6 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# ---------------------------------------------------------
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Email
@@ -166,12 +165,15 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '-kDfEATMGrAGUZ7IU0AEfcqMIn4'),
 }
 
+# LEGACY SETTING: Mandatory fallback to prevent django-cloudinary-storage from crashing
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+# MODERN DJANGO 6.1 SETTINGS
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # CompressedStaticFilesStorage bypasses the strict manifest checks that crashed your build earlier
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "cloudinary_storage.storage.StaticHashedCloudinaryStorage",
     },
 }
