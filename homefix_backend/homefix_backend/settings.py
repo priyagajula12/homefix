@@ -132,8 +132,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'homefix_static_deploy')
 # Email
 MAILERS = {
     'default': {
