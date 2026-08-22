@@ -175,6 +175,7 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        # 👇 Django's default storage stops WhiteNoise from crashing during compression
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
